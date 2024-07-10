@@ -40,9 +40,9 @@ class FeaturedProductsList(APIView):
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
             properties={
-                'product': openapi.Schema(type=openapi.TYPE_INTEGER),
+                'car': openapi.Schema(type=openapi.TYPE_INTEGER),
             },
-            required=['product']
+            required=['car']
         ),
         manual_parameters=[
             openapi.Parameter('Authorization', openapi.IN_HEADER, description="Bearer <token>",
@@ -52,7 +52,7 @@ class FeaturedProductsList(APIView):
     )
     def post(self, request):
         try:
-            product_id = request.data.get("product")
+            car_id = request.data.get("car")
             user_id = get_user_id_from_token(request)
 
             try:
@@ -61,23 +61,23 @@ class FeaturedProductsList(APIView):
                 return Response(data={"message": "User does not exist."}, status=status.HTTP_404_NOT_FOUND)
 
             try:
-                product = Car.objects.get(id=product_id)
+                car = Car.objects.get(id=car_id)
             except Car.DoesNotExist:
                 return Response(data={"message": "Car does not exist."}, status=status.HTTP_404_NOT_FOUND)
 
-            featured_product = FeaturedCar.objects.filter(product=product, user=user).first()
-            if featured_product:
-                if featured_product.is_deleted:
-                    featured_product.is_deleted = False
-                    featured_product.save()
-                    return Response(data={"message": "We successfully added product to features."},
+            featured_car = FeaturedCar.objects.filter(car=car, user=user).first()
+            if featured_car:
+                if featured_car.is_deleted:
+                    featured_car.is_deleted = False
+                    featured_car.save()
+                    return Response(data={"message": "We successfully added car to features."},
                                     status=status.HTTP_201_CREATED)
                 else:
-                    return Response(data={"message": "You have already added this product to your favorites."},
+                    return Response(data={"message": "You have already added this car to your favorites."},
                                     status=status.HTTP_200_OK)
             else:
-                FeaturedCar.objects.create(product=product, user=user)
-                return Response(data={"message": "We successfully added product to features."},
+                FeaturedCar.objects.create(car=car, user=user)
+                return Response(data={"message": "We successfully added car to features."},
                                 status=status.HTTP_201_CREATED)
         except Exception as e:
             logger.error("Internal server error when creating a Featured Car: %s", str(e))
