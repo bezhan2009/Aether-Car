@@ -18,6 +18,7 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -28,6 +29,7 @@ SECRET_KEY = 'django-insecure-1%xo6y&@j&yj1r03fa*!@8%p(#0mn)9=s_1$n+6i7%ktq2#8!p
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'aether2024-839adee54fd1.herokuapp.com']
+
 
 # Application definition
 
@@ -80,8 +82,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'AetherEShop.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
@@ -91,10 +95,22 @@ DATABASES = {
         'PASSWORD': 'bezhan2009',
         'HOST': 'localhost',
         'PORT': '5432',
+    },
+    'elephantsql': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'plfvzltv',
+        'USER': 'plfvzltv',
+        'PASSWORD': 'si2Yzx2w5iAQed0Iw9-0I5kT1rGhE6uD',
+        'HOST': 'john.db.elephantsql.com',
+        'PORT': '5432',
+    },
+    'sqlite': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-django_heroku.settings(locals())
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -114,6 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -124,6 +141,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -141,6 +159,7 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
+
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=45),
@@ -179,7 +198,7 @@ SIMPLE_JWT = {
     "TOKEN_VERIFY_SERIALIZER": "rest_framework_simplejwt.serializers.TokenVerifySerializer",
     "TOKEN_BLACKLIST_SERIALIZER": "rest_framework_simplejwt.serializers.TokenBlacklistSerializer",
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
-    "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework.simplejwt.serializers.TokenRefreshSlidingSerializer",
+    "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
 
 LOGGING = {

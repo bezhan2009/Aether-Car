@@ -46,5 +46,6 @@ urlpatterns = [
 
     path('auth/', include('userapp.urls')),
     path('address/', include('addressapp.urls')),
+    path('cars/', include('carapp.urls')),
     path('featured_products', include('featured_productapp.urls')),
 ]
