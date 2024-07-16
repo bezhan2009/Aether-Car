@@ -27,7 +27,12 @@ SECRET_KEY = 'django-insecure-1%xo6y&@j&yj1r03fa*!@8%p(#0mn)9=s_1$n+6i7%ktq2#8!p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'aether2024-839adee54fd1.herokuapp.com']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'aether2024-839adee54fd1.herokuapp.com',
+    'athercar2024-17d588799d23.herokuapp.com',
+]
 
 # Application definition
 
@@ -88,7 +93,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('DB_NAME', 'dquknpfd'),  # Имя базы данных
         'USER': os.environ.get('DB_USER', 'dquknpfd'),  # Имя пользователя базы данных
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'cfiKLKfKPER590K83YNo_GBCS8mNC5ba'),   # Пароль пользователя базы
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'cfiKLKfKPER590K83YNo_GBCS8mNC5ba'),  # Пароль пользователя базы
         # данных
         'HOST': os.environ.get('DB_HOST', 'tiny.db.elephantsql.com'),  # Хост базы данных
         'PORT': os.environ.get('DB_PORT', '5432'),  # Порт базы данных (обычно 5432)
