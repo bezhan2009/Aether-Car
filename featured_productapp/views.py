@@ -18,7 +18,7 @@ from userapp.models import UserProfile
 logger = logging.getLogger('featured_productapp.views')
 
 
-class FeaturedProductsList(APIView):
+class FeaturedCarList(APIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
@@ -99,13 +99,13 @@ class FeaturedProductDetail(APIView):
         user_id = get_user_id_from_token(request)
         user = UserProfile.objects.get(id=user_id)
         try:
-            featured_product = FeaturedCar.objects.get(id=pk, user=user, is_deleted=False)
+            featured_car = FeaturedCar.objects.get(id=pk, user=user, is_deleted=False)
         except FeaturedCar.DoesNotExist:
             return Response(data={"message": "Featured Car does not exist."},
                             status=status.HTTP_404_NOT_FOUND)
 
-        featured_product.is_deleted = True
-        featured_product.save()
+        featured_car.is_deleted = True
+        featured_car.save()
         return Response(data={"message": "product has been successfully removed from featured products"},
                         status=status.HTTP_200_OK)
 
