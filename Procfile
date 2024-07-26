@@ -1,1 +1,1 @@
-web: gunicorn AetherEShop.wsgi --log-file -
+web: gunicorn car_backend_Aether.wsgi

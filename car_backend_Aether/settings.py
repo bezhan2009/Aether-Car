@@ -16,7 +16,6 @@ import dj_database_url
 from pathlib import Path
 from datetime import timedelta
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -88,28 +87,13 @@ WSGI_APPLICATION = 'car_backend_Aether.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
-# URL ����������� � ���� ������
+# URL подключения к базе данных
 DATABASE_URL = "postgresql://test:Py6HoAxccayCEED72ARX2wLY1s2vayDr@dpg-cqhf8uiju9rs738kbgrg-a.singapore-postgres.render.com/test_naw3"
 
-
-# ��������� ���� ������
+# Настройки базы данных
 DATABASES = {
-<<<<<<< HEAD:AetherEShop/settings.py
     'default': dj_database_url.parse(DATABASE_URL)
-=======
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'dquknpfd'),  # Имя базы данных
-        'USER': os.environ.get('DB_USER', 'dquknpfd'),  # Имя пользователя базы данных
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'cfiKLKfKPER590K83YNo_GBCS8mNC5ba'),  # Пароль пользователя базы
-        # данных
-        'HOST': os.environ.get('DB_HOST', 'tiny.db.elephantsql.com'),  # Хост базы данных
-        'PORT': os.environ.get('DB_PORT', '5432'),  # Порт базы данных (обычно 5432)
-    }
->>>>>>> fce77c07864eef490233fa86d7933ab1f85e98be:car_backend_Aether/settings.py
 }
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
