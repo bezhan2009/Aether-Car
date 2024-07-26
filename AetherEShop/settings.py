@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import os
 import django_heroku
+import dj_database_url
 
 from pathlib import Path
 from datetime import timedelta
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +32,6 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'aether2024-839adee54fd1.herokuapp.com',
     'athercar2024-17d588799d23.herokuapp.com',
 ]
 
@@ -88,16 +89,13 @@ WSGI_APPLICATION = 'AetherEShop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# URL подключения к базе данных
+DATABASE_URL = "postgresql://test:Py6HoAxccayCEED72ARX2wLY1s2vayDr@dpg-cqhf8uiju9rs738kbgrg-a.singapore-postgres.render.com/test_naw3"
+
+
+# Настройки базы данных
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'dquknpfd'),  # Имя базы данных
-        'USER': os.environ.get('DB_USER', 'dquknpfd'),  # Имя пользователя базы данных
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'cfiKLKfKPER590K83YNo_GBCS8mNC5ba'),  # Пароль пользователя базы
-        # данных
-        'HOST': os.environ.get('DB_HOST', 'tiny.db.elephantsql.com'),  # Хост базы данных
-        'PORT': os.environ.get('DB_PORT', '5432'),  # Порт базы данных (обычно 5432)
-    }
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
 # Password validation
