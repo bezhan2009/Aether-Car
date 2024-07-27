@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: aether-car-backend
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn car_backend_Aether.wsgi:application
+    envVars:
+      - key: DATABASE_URL
+        value: 'postgresql://test:Py6HoAxccayCEED72ARX2wLY1s2vayDr@dpg-cqhf8uiju9rs738kbgrg-a.singapore-postgres.render.com/test_naw3'
+      - key: SECRET_KEY
+        sync: false
+        value: django-insecure-1%xo6y&@j&yj1r03fa*!@8%p(#0mn)9=s_1$n+6i7%ktq2#8!p
+      - key: ALLOWED_HOSTS
+        value: '*'
+      - key: DEBUG
+        value: 'False'
+databases:
+  - name: test_naw3
+    ipAllowList:
+      - source: 0.0.0.0/0
