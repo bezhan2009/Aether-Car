@@ -13,6 +13,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'your_default_secret_key')
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '*').split(',')
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://test:Py6HoAxccayCEED72ARX2wLY1s2vayDr@dpg-cqhf8uiju9rs738kbgrg-a.singapore-postgres.render.com/test_naw3')
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -62,7 +64,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'car_backend_Aether.wsgi.application'
 
-DATABASE_URL = os.getenv('DATABASE_URL')
 
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL)
